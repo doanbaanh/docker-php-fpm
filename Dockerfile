@@ -3,7 +3,6 @@ FROM php:7.4-fpm-alpine
 LABEL maintainer="doanbaanh@gmail.com"
 
 RUN apk update && apk --no-cache --virtual add \
-		$PHPIZE_DEPS \
 		supervisor \
 	&& rm /var/cache/apk/*
 
@@ -28,3 +27,5 @@ RUN chmod +x /usr/local/bin/install-php-extensions \
 		redis \
 		sockets \
 		zip
+
+RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
