@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 LABEL maintainer="doanbaanh@gmail.com"
 
@@ -29,3 +29,8 @@ RUN apk update && apk --no-cache --virtual add \
 	&& cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 COPY ./supervisord.conf /etc/supervisord.conf
+
+RUN cp /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini \
+	&& install-php-extensions xdebug
+
+COPY xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
