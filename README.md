@@ -26,3 +26,31 @@ redis
 sockets
 zip
 ```
+
+# XDebug 3 configuration for VSCode
+
+### <workspace_directory>/.vscode/launch.json
+```
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for XDebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/var/www": "${workspaceFolder}/workspace"
+            },
+            "ignore": [
+                "**/vendor/**/*.php"
+            ],
+            "xdebugSettings": {
+                "max_children": 10000,
+                "max_data": 10000,
+                "show_hidden": 1
+            }
+        }
+    ]
+}
+```
