@@ -1,5 +1,7 @@
 # Get started:
 ```
+docker pull doanbaanh/php-fpm:5.6
+
 docker pull doanbaanh/php-fpm:7.4
 docker pull doanbaanh/php-fpm:7.4-xdebug
 
