@@ -5,6 +5,7 @@ LABEL maintainer="doanbaanh@gmail.com"
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN apk update && apk --no-cache --virtual add \
+		git \
 		supervisor \
 	&& rm /var/cache/apk/* \
 	&& chmod +x /usr/local/bin/install-php-extensions \
@@ -26,6 +27,7 @@ RUN apk update && apk --no-cache --virtual add \
 		redis \
 		sockets \
 		zip \
-	&& cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
+	&& cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
+	&& sed -i "s/^;\?date\.timezone =.*/date\.timezone = Europe\/Moscow/" /usr/local/etc/php/php.ini
 
 COPY ./supervisord.conf /etc/supervisord.conf
