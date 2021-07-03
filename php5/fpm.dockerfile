@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine
+FROM php:5-fpm-alpine
 
 LABEL maintainer="doanbaanh@gmail.com"
 
@@ -31,3 +31,5 @@ RUN apk update && apk --no-cache --virtual add \
 	&& sed -i "s/^;\?date\.timezone =.*/date\.timezone = Europe\/Moscow/" /usr/local/etc/php/php.ini
 
 COPY ./supervisord.conf /etc/supervisord.conf
+
+RUN apk add --no-cache --upgrade grep

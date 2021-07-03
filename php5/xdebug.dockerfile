@@ -1,4 +1,4 @@
-FROM doanbaanh/php-fpm:5.6
+FROM doanbaanh/php-fpm:5
 
 LABEL maintainer="doanbaanh@gmail.com"
 

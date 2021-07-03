@@ -1,12 +1,13 @@
 # Get started:
 ```
-docker pull doanbaanh/php-fpm:5.6
+docker pull doanbaanh/php-fpm:5
+docker pull doanbaanh/php-fpm:5-xdebug
 
-docker pull doanbaanh/php-fpm:7.4
-docker pull doanbaanh/php-fpm:7.4-xdebug
+docker pull doanbaanh/php-fpm:7
+docker pull doanbaanh/php-fpm:7-xdebug
 
-docker pull doanbaanh/php-fpm:8.0
-docker pull doanbaanh/php-fpm:8.0-xdebug
+docker pull doanbaanh/php-fpm:8
+docker pull doanbaanh/php-fpm:8-xdebug
 ```
 
 # Included extensions:
@@ -29,7 +30,7 @@ sockets
 zip
 ```
 
-# XDebug 3 configuration for VSCode
+# Example XDebug configuration for VSCode
 
 ### <workspace_directory>/.vscode/launch.json
 ```

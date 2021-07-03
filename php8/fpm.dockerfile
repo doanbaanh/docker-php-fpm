@@ -1,4 +1,4 @@
-FROM php:5.6-fpm-alpine
+FROM php:8-fpm-alpine
 
 LABEL maintainer="doanbaanh@gmail.com"
 
