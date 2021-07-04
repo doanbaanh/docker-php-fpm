@@ -1,13 +1,13 @@
 # Get started:
 ```
-docker pull doanbaanh/php-fpm:5
-docker pull doanbaanh/php-fpm:5-xdebug
+docker pull doanbaanh/php-fpm:5.6
+docker pull doanbaanh/php-fpm:5.6-xdebug
 
-docker pull doanbaanh/php-fpm:7
-docker pull doanbaanh/php-fpm:7-xdebug
+docker pull doanbaanh/php-fpm:7.4
+docker pull doanbaanh/php-fpm:7.4-xdebug
 
-docker pull doanbaanh/php-fpm:8
-docker pull doanbaanh/php-fpm:8-xdebug
+docker pull doanbaanh/php-fpm:8.0
+docker pull doanbaanh/php-fpm:8.0-xdebug
 ```
 
 # Included extensions:
