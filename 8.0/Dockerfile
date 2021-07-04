@@ -1,4 +1,4 @@
-FROM php:7-fpm-alpine
+FROM php:8.0-fpm-alpine
 
 LABEL maintainer="doanbaanh@gmail.com"
 
@@ -6,6 +6,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 
 RUN apk update && apk --no-cache --virtual add \
 		git \
+		grep \
 		supervisor \
 	&& rm /var/cache/apk/* \
 	&& chmod +x /usr/local/bin/install-php-extensions \
