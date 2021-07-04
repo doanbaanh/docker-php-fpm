@@ -10,11 +10,10 @@ RUN apk update && apk --no-cache --virtual add \
 		supervisor \
 	&& rm /var/cache/apk/* \
 	&& chmod +x /usr/local/bin/install-php-extensions \
-	&& sync
-
-RUN install-php-extensions \
+	&& sync \
+	&& install-php-extensions \
 		@composer \
-		# amqp \
+		amqp \
 		apcu \
 		bcmath \
 		exif \
