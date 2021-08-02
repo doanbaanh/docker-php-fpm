@@ -1,0 +1,51 @@
+version: '2.4'
+
+services:
+
+  php5:
+    build: ./5
+    image: doanbaanh/php-fpm:5
+    logging:
+      driver: none
+
+  php7:
+    build: ./7
+    image: doanbaanh/php-fpm:7
+    logging:
+      driver: none
+
+  php8:
+    build: ./8
+    image: doanbaanh/php-fpm:8
+    logging:
+      driver: none
+
+  php5-xdebug:
+    build:
+      context: ./5
+      dockerfile: xdebug.dockerfile
+    image: doanbaanh/php-fpm:5-xdebug
+    logging:
+      driver: none
+    depends_on:
+      - php5
+
+  php7-xdebug:
+    build:
+      context: ./7
+      dockerfile: xdebug.dockerfile
+    image: doanbaanh/php-fpm:7-xdebug
+    logging:
+      driver: none
+    depends_on:
+      - php7
+
+  php8-xdebug:
+    build:
+      context: ./8
+      dockerfile: xdebug.dockerfile
+    image: doanbaanh/php-fpm:8-xdebug
+    logging:
+      driver: none
+    depends_on:
+      - php8
