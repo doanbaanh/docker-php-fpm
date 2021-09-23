@@ -1,4 +1,4 @@
-FROM php:8-fpm-alpine
+FROM php:7.4-fpm-alpine
 
 LABEL maintainer="doanbaanh@gmail.com"
 
@@ -8,8 +8,11 @@ RUN apk update && apk --no-cache --virtual add \
 		bash \
 		git \
 		grep \
+		nano \
 		parallel \
+		sudo \
 		supervisor \
+		yq \
 	&& rm /var/cache/apk/* \
 	&& chmod +x /usr/local/bin/install-php-extensions \
 	&& sync \
@@ -23,14 +26,21 @@ RUN apk update && apk --no-cache --virtual add \
 		imagick \
 		intl \
 		mcrypt \
+		memcache \
+		memcached \
 		mongodb \
 		opcache \
 		pdo_mysql \
 		pdo_pgsql \
+		pcntl \
 		redis \
 		sockets \
 		zip \
 	&& cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
-	&& sed -i "s/^;\?date\.timezone =.*/date\.timezone = Europe\/Moscow/" /usr/local/etc/php/php.ini
+	&& sed -i "s/^;\?date\.timezone =.*/date\.timezone = Europe\/Moscow/" /usr/local/etc/php/php.ini \
+	&& sed -i "s/^;\?max_execution_time =.*/max_execution_time = 180/" /usr/local/etc/php/php.ini \
+	&& sed -i "s/^;\?memory_limit =.*/memory_limit = 128M/" /usr/local/etc/php/php.ini \
+	&& sed -i "s/^;\?post_max_size =.*/post_max_size = 64M/" /usr/local/etc/php/php.ini \
+	&& sed -i "s/^;\?upload_max_filesize =.*/upload_max_filesize = 64M/" /usr/local/etc/php/php.ini
 
-COPY ./supervisord.conf /etc/supervisord.conf
+CMD ["php-fpm", "-R"]

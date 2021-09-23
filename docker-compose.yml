@@ -2,50 +2,50 @@ version: '2.4'
 
 services:
 
-  php5:
-    build: ./5
-    image: doanbaanh/php-fpm:5
-    logging:
-      driver: none
+  php56:
+    build: ./5.6
+    image: doanbaanh/php-fpm:5.6
 
-  php7:
-    build: ./7
-    image: doanbaanh/php-fpm:7
-    logging:
-      driver: none
+  php73:
+    build: ./7.3
+    image: doanbaanh/php-fpm:7.3
 
-  php8:
-    build: ./8
-    image: doanbaanh/php-fpm:8
-    logging:
-      driver: none
+  php74:
+    build: ./7.4
+    image: doanbaanh/php-fpm:7.4
 
-  php5-xdebug:
-    build:
-      context: ./5
-      dockerfile: xdebug.dockerfile
-    image: doanbaanh/php-fpm:5-xdebug
-    logging:
-      driver: none
-    depends_on:
-      - php5
+  php80:
+    build: ./8.0
+    image: doanbaanh/php-fpm:8.0
 
-  php7-xdebug:
-    build:
-      context: ./7
-      dockerfile: xdebug.dockerfile
-    image: doanbaanh/php-fpm:7-xdebug
-    logging:
-      driver: none
-    depends_on:
-      - php7
+  php56-dev:
+    build: ./5.6/dev
+    image: doanbaanh/php-fpm:5.6-dev
 
-  php8-xdebug:
-    build:
-      context: ./8
-      dockerfile: xdebug.dockerfile
-    image: doanbaanh/php-fpm:8-xdebug
-    logging:
-      driver: none
-    depends_on:
-      - php8
+  php73-dev:
+    build: ./7.3/dev
+    image: doanbaanh/php-fpm:7.3-dev
+
+  php74-dev:
+    build: ./7.4/dev
+    image: doanbaanh/php-fpm:7.4-dev
+
+  php80-dev:
+    build: ./8.0/dev
+    image: doanbaanh/php-fpm:8.0-dev
+
+  php56-dev-xdebug:
+    build: ./5.6/dev-xdebug
+    image: doanbaanh/php-fpm:5.6-dev-xdebug
+
+  php73-dev-xdebug:
+    build: ./7.3/dev-xdebug
+    image: doanbaanh/php-fpm:7.3-dev-xdebug
+
+  php74-dev-xdebug:
+    build: ./7.4/dev-xdebug
+    image: doanbaanh/php-fpm:7.4-dev-xdebug
+
+  php80-dev-xdebug:
+    build: ./8.0/dev-xdebug
+    image: doanbaanh/php-fpm:8.0-dev-xdebug
