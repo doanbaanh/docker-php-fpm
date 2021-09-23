@@ -1,13 +1,16 @@
 # Get started:
 ```
-docker pull doanbaanh/php-fpm:5
-docker pull doanbaanh/php-fpm:5-xdebug
+docker pull doanbaanh/php-fpm:5.6
+docker pull doanbaanh/php-fpm:5.6-dev
+docker pull doanbaanh/php-fpm:5.6-dev-xdebug
 
-docker pull doanbaanh/php-fpm:7
-docker pull doanbaanh/php-fpm:7-xdebug
+docker pull doanbaanh/php-fpm:7.4
+docker pull doanbaanh/php-fpm:7.4-dev
+docker pull doanbaanh/php-fpm:7.4-dev-xdebug
 
-docker pull doanbaanh/php-fpm:8
-docker pull doanbaanh/php-fpm:8-xdebug
+docker pull doanbaanh/php-fpm:8.0
+docker pull doanbaanh/php-fpm:8.0-dev
+docker pull doanbaanh/php-fpm:8.0-dev-xdebug
 ```
 
 # Included extensions:
@@ -21,10 +24,13 @@ gd
 imagick
 intl
 mcrypt
+memcache
+memcached
 mongodb
 opcache
 pdo_mysql
 pdo_pgsql
+pcntl
 redis
 sockets
 zip
@@ -32,7 +38,7 @@ zip
 
 # Example XDebug configuration for VSCode
 
-### <workspace_directory>/.vscode/launch.json
+### <workspace_folder>/.vscode/launch.json
 ```
 {
     "version": "0.2.0",
@@ -43,7 +49,7 @@ zip
             "request": "launch",
             "port": 9003,
             "pathMappings": {
-                "/var/www": "${workspaceFolder}/workspace"
+                "/usr/src": "${workspaceFolder}/workspace"
             },
             "ignore": [
                 "**/vendor/**/*.php"
