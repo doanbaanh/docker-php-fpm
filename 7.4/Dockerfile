@@ -12,7 +12,7 @@ RUN apk update && apk --no-cache --virtual add \
 		parallel \
 		sudo \
 		supervisor \
-		yq \
+		jq xq yq \
 	&& rm /var/cache/apk/* \
 	&& chmod +x /usr/local/bin/install-php-extensions \
 	&& sync \

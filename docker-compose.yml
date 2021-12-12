@@ -18,6 +18,10 @@ services:
     build: ./8.0
     image: doanbaanh/php-fpm:8.0
 
+  php81:
+    build: ./8.1
+    image: doanbaanh/php-fpm:8.1
+
   php56-dev:
     build: ./5.6/dev
     image: doanbaanh/php-fpm:5.6-dev
@@ -34,6 +38,10 @@ services:
     build: ./8.0/dev
     image: doanbaanh/php-fpm:8.0-dev
 
+  php81-dev:
+    build: ./8.1/dev
+    image: doanbaanh/php-fpm:8.1-dev
+
   php56-dev-xdebug:
     build: ./5.6/dev-xdebug
     image: doanbaanh/php-fpm:5.6-dev-xdebug
@@ -49,3 +57,7 @@ services:
   php80-dev-xdebug:
     build: ./8.0/dev-xdebug
     image: doanbaanh/php-fpm:8.0-dev-xdebug
+
+  php81-dev-xdebug:
+    build: ./8.1/dev-xdebug
+    image: doanbaanh/php-fpm:8.1-dev-xdebug
