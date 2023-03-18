@@ -42,7 +42,7 @@ services:
       PHP_IDE_CONFIG: "serverName=php"
       XDEBUG_MODE: "develop,debug,profile,coverage"
     volumes:
-      - "../:/usr/src:cached"
+      - "./:/usr/src:cached"
     working_dir: "/usr/src"
     restart: "unless-stopped"
     logging: *default-logging
