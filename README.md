@@ -7,21 +7,30 @@ make build
 ```
 docker pull doanbaanh/php-fpm:8.2
 docker pull doanbaanh/php-fpm:8.2-dev
-
 docker pull doanbaanh/php-fpm:8.1
 docker pull doanbaanh/php-fpm:8.1-dev
-
 docker pull doanbaanh/php-fpm:8.0
 docker pull doanbaanh/php-fpm:8.0-dev
-
 docker pull doanbaanh/php-fpm:7.4
 docker pull doanbaanh/php-fpm:7.4-dev
-
 docker pull doanbaanh/php-fpm:7.3
 docker pull doanbaanh/php-fpm:7.3-dev
-
 docker pull doanbaanh/php-fpm:5.6
 docker pull doanbaanh/php-fpm:5.6-dev
+
+# For Apple Silicon
+docker pull doanbaanh/php-fpm:8.2-arm64v8
+docker pull doanbaanh/php-fpm:8.2-dev-arm64v8
+docker pull doanbaanh/php-fpm:8.1-arm64v8
+docker pull doanbaanh/php-fpm:8.1-dev-arm64v8
+docker pull doanbaanh/php-fpm:8.0-arm64v8
+docker pull doanbaanh/php-fpm:8.0-dev-arm64v8
+docker pull doanbaanh/php-fpm:7.4-arm64v8
+docker pull doanbaanh/php-fpm:7.4-dev-arm64v8
+docker pull doanbaanh/php-fpm:7.3-arm64v8
+docker pull doanbaanh/php-fpm:7.3-dev-arm64v8
+docker pull doanbaanh/php-fpm:5.6-arm64v8
+docker pull doanbaanh/php-fpm:5.6-dev-arm64v8
 ```
 
 # docker-compose.yml
@@ -36,7 +45,7 @@ x-logging: &default-logging
 
 services:
   php:
-    image: doanbaanh/php-fpm:8.2-dev
+    image: "doanbaanh/php-fpm:8.2-dev"
     container_name: "php"
     environment:
       PHP_IDE_CONFIG: "serverName=php"

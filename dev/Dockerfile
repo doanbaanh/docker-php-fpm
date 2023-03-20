@@ -1,5 +1,6 @@
 ARG PHP_IMG_TAG
-FROM doanbaanh/php-fpm:${PHP_IMG_TAG}
+ARG PHP_IMAGE
+FROM ${PHP_IMAGE}:${PHP_IMG_TAG}
 
 RUN apk update \
     && apk --no-cache --virtual add graphviz \

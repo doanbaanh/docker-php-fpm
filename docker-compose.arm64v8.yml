@@ -1,0 +1,102 @@
+version: "3.9"
+
+services:
+  # PROD
+  
+  php-8.2:
+    image: "doanbaanh/php-fpm:8.2-arm64v8"
+    build:
+      context: "./8.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=8.2"
+  
+  php-8.1:
+    image: "doanbaanh/php-fpm:8.1-arm64v8"
+    build:
+      context: "./8.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=8.1"
+
+  php-8.0:
+    image: "doanbaanh/php-fpm:8.0-arm64v8"
+    build:
+      context: "./8.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=8.0"
+
+  php-7.4:
+    image: "doanbaanh/php-fpm:7.4-arm64v8"
+    build:
+      context: "./7.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=7.4"
+
+  php-7.3:
+    image: "doanbaanh/php-fpm:7.3-arm64v8"
+    build:
+      context: "./7.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=7.3"
+  
+  php-5.6:
+    image: "doanbaanh/php-fpm:5.6-arm64v8"
+    build:
+      context: "./5.x"
+      args:
+        - "PHP_IMAGE=arm64v8/php"
+        - "PHP_IMG_TAG=5.6"
+
+  # DEV
+  php-8.2-dev:
+    image: "doanbaanh/php-fpm:8.2-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=8.2-arm64v8"
+  
+  php-8.1-dev:
+    image: "doanbaanh/php-fpm:8.1-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=8.1-arm64v8"
+
+  php-8.0-dev:
+    image: "doanbaanh/php-fpm:8.0-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=8.0-arm64v8"
+
+  php-7.4-dev:
+    image: "doanbaanh/php-fpm:7.4-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=7.4-arm64v8"
+        
+  php-7.3-dev:
+    image: "doanbaanh/php-fpm:7.3-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=7.3-arm64v8"
+
+  php-5.6-dev:
+    image: "doanbaanh/php-fpm:5.6-dev-arm64v8"
+    build:
+      context: "./dev"
+      args:
+        - "PHP_IMAGE=doanbaanh/php-fpm"
+        - "PHP_IMG_TAG=5.6-arm64v8"
+        

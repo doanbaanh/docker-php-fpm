@@ -1,5 +1,6 @@
 ARG PHP_IMG_TAG
-FROM php:${PHP_IMG_TAG}-fpm-alpine
+ARG PHP_IMAGE
+FROM ${PHP_IMAGE}:${PHP_IMG_TAG}-fpm-alpine
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
