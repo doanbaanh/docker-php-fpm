@@ -48,4 +48,4 @@ RUN chmod +x /usr/local/bin/install-php-extensions \
 	&& cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 COPY docker-php.ini /usr/local/etc/php/conf.d/docker-php.ini
-COPY docker-php-ext-xhprof /usr/local/etc/php/conf.d/docker-php-ext-xhprof.ini
+COPY docker-php-ext-xhprof.ini /usr/local/etc/php/conf.d/docker-php-ext-xhprof.ini
