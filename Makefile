@@ -1,50 +1,49 @@
-.DEFAULT_GOAL := help
-
 ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(ARGS):;@:)
 
+.DEFAULT_GOAL := help
 help: ## Show this help
 	@printf "\033[33m%s:\033[0m\n" 'Available commands'
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  \033[32m%-18s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-build: ## Build PHP images
+build: ## Build images
 ifneq (,${ARGS})
-	@docker compose -f docker-compose.yml build ${ARGS}
-else
-	@docker compose -f docker-compose.yml build
+	@docker build \
+		--no-cache \
+		--tag doanbaanh/php-fpm:${ARGS} \
+		--build-arg PHP_IMAGE=php \
+		--build-arg PHP_IMAGE_TAG=${ARGS} \
+		.
+	@docker build \
+		--no-cache \
+		--tag doanbaanh/php-fpm:${ARGS}-dev \
+		--build-arg PHP_IMAGE=doanbaanh/php-fpm \
+		--build-arg PHP_IMAGE_TAG=${ARGS} \
+		./xdebug
 endif
 
-build-arm: ## Build PHP images (For Apple Silicon)
+build-arm: ## Build images (for ARM64V8)
 ifneq (,${ARGS})
-	@docker compose -f docker-compose.arm64v8.yml build ${ARGS}
-else
-	@docker compose -f docker-compose.arm64v8.yml build
+	@docker build \
+		--no-cache \
+		--tag doanbaanh/php-fpm-arm64v8:${ARGS} \
+		--build-arg PHP_IMAGE=arm64v8/php \
+		--build-arg PHP_IMAGE_TAG=${ARGS} \
+		.
+	@docker build \
+		--no-cache \
+		--tag doanbaanh/php-fpm-arm64v8:${ARGS}-dev \
+		--build-arg PHP_IMAGE=doanbaanh/php-fpm-arm64v8 \
+		--build-arg PHP_IMAGE_TAG=${ARGS} \
+		./xdebug
 endif
 
-pull: ## Pull PHP images
-ifneq (,${ARGS})
-	@docker compose -f docker-compose.yml pull ${ARGS}
-else
-	@docker compose -f docker-compose.yml pull
-endif
+push: ## Push images
+	@docker push \
+		--all-tags \
+		doanbaanh/php-fpm
 
-pull-arm: ## Pull PHP images (For Apple Silicon)
-ifneq (,${ARGS})
-	@docker compose -f docker-compose.arm64v8.yml pull ${ARGS}
-else
-	@docker compose -f docker-compose.arm64v8.yml pull
-endif
-
-push: ## Push PHP images
-ifneq (,${ARGS})
-	@docker compose -f docker-compose.yml push ${ARGS}
-else
-	@docker compose -f docker-compose.yml push
-endif
-
-push-arm: ## Push PHP images (For Apple Silicon)
-ifneq (,${ARGS})
-	@docker compose -f docker-compose.arm64v8.yml push ${ARGS}
-else
-	@docker compose -f docker-compose.arm64v8.yml push
-endif
+push-arm: ## Push images (for ARM64V8)
+	@docker push \
+		--all-tags \
+		doanbaanh/php-fpm-arm64v8

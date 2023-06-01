@@ -1,89 +1,95 @@
-# Build
-```
-make build
-```
-
-# Get started:
+# Docker images
 ```
 docker pull doanbaanh/php-fpm:8.2
-docker pull doanbaanh/php-fpm:8.2-dev
 docker pull doanbaanh/php-fpm:8.1
-docker pull doanbaanh/php-fpm:8.1-dev
 docker pull doanbaanh/php-fpm:8.0
-docker pull doanbaanh/php-fpm:8.0-dev
 docker pull doanbaanh/php-fpm:7.4
-docker pull doanbaanh/php-fpm:7.4-dev
 docker pull doanbaanh/php-fpm:7.3
-docker pull doanbaanh/php-fpm:7.3-dev
-docker pull doanbaanh/php-fpm:5.6
-docker pull doanbaanh/php-fpm:5.6-dev
 
-# For Apple Silicon
-docker pull doanbaanh/php-fpm:8.2-arm64v8
-docker pull doanbaanh/php-fpm:8.2-dev-arm64v8
-docker pull doanbaanh/php-fpm:8.1-arm64v8
-docker pull doanbaanh/php-fpm:8.1-dev-arm64v8
-docker pull doanbaanh/php-fpm:8.0-arm64v8
-docker pull doanbaanh/php-fpm:8.0-dev-arm64v8
-docker pull doanbaanh/php-fpm:7.4-arm64v8
-docker pull doanbaanh/php-fpm:7.4-dev-arm64v8
-docker pull doanbaanh/php-fpm:7.3-arm64v8
-docker pull doanbaanh/php-fpm:7.3-dev-arm64v8
-docker pull doanbaanh/php-fpm:5.6-arm64v8
-docker pull doanbaanh/php-fpm:5.6-dev-arm64v8
+# for arm64v8 (Apple Silicon)
+docker pull doanbaanh/php-fpm-arm64v8:8.2
+docker pull doanbaanh/php-fpm-arm64v8:8.1
+docker pull doanbaanh/php-fpm-arm64v8:8.0
+docker pull doanbaanh/php-fpm-arm64v8:7.4
+docker pull doanbaanh/php-fpm-arm64v8:7.3
+
+# with XDebug 3
+docker pull doanbaanh/php-fpm:<PHP_VERSION>-dev
+docker pull doanbaanh/php-fpm-arm64v8:<PHP_VERSION>-dev
 ```
 
-# docker-compose.yml
-```
+# XDebug environment
+```yaml
 version: "3.9"
-
-x-logging: &default-logging
-  driver: "json-file"
-  options:
-    max-size: "12m"
-    max-file: "5"
 
 services:
   php:
+    # or "doanbaanh/php-fpm-arm64v8:8.2-dev"
     image: "doanbaanh/php-fpm:8.2-dev"
-    container_name: "php"
     environment:
       PHP_IDE_CONFIG: "serverName=php"
       XDEBUG_MODE: "develop,debug,profile,coverage"
-    volumes:
-      - "./:/usr/src:cached"
-    working_dir: "/usr/src"
-    restart: "unless-stopped"
-    logging: *default-logging
 ```
 
-# Included extensions:
+# Included extensions
 ```
 @composer
 amqp
 apcu
 bcmath
+Core
+ctype
+curl
+date
+dom
 exif
+fileinfo
+filter
+ftp
 gd
+hash
+iconv
 imagick
 intl
+json
+libxml
+mbstring
 mcrypt
 memcache
 memcached
 mongodb
+mysqlnd
 odbc
-opcache
+openssl
+pcntl
+pcre
+PDO
 pdo_mysql
 pdo_pgsql
+pdo_sqlite
 pdo_sqlsrv
-pcntl
-redis
+Phar
+posix
+random
 rdkafka
+readline
+redis
+Reflection
+session
+SimpleXML
 sockets
-xsl
-zip
-
-# *-dev build
-xdebug
+sodium
+SPL
+sqlite3
+standard
+tokenizer
 xhprof
+xml
+xmlreader
+xmlwriter
+xsl
+Zend OPcache
+zip
+zlib
+# xdebug - in dev images
 ```
